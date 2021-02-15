@@ -3,11 +3,10 @@ include_once '../functions.php';
 $title = 'Mercado Genérico - Listagem de Produtos';
 getHeader();
 ?>
-	<div class="row">
-		<div class="col-md-3">
-			<h3>Produtos</h3>
-		</div>
-		
+	<div class="d-flex justify-content-between">
+		<a href="../dashboard" type="button" class="btn btn-danger">Voltar</a>
+		<h3>Produtos</h3>		
+		<a href="novo.php" type="button" class="btn btn-primary">Novo</a>
 	</div>
 	<div  class="col-md-12 pt-3">
 		<div class="row">
@@ -23,9 +22,6 @@ getHeader();
 				</li>
 			<?php } ?>
 			</ul>
-		</div>
-		<div class="row mt-3">
-			<a href="novo.php" type="button" class="btn btn-primary btn-lg btn-block">Adicionar novo</a>
 		</div>
 	</div>
 	
