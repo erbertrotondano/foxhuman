@@ -1,6 +1,6 @@
 <?php 
 include_once '../functions.php'; 
-$title = 'Mercado Genérico';
+$title = 'Mercado Genérico - Listagem de Produtos';
 getHeader();
 ?>
 	<div class="row">
@@ -13,17 +13,19 @@ getHeader();
 		<div class="row">
 			<ul class="list-group w-100">
 			<?php 
-
 			$products = getAllProducts($CONNECTION); 
 			foreach($products as $product){ ?>
-				<li class="list-group-item"><?php echo $product['product_name']; ?></li>
+				<li class="list-group-item">
+					<?php echo $product['product_name']; ?>	
+					<div class="float-right">
+						<a href="excluir.php?id=<?php echo $product['id'] ?>" class="badge badge-danger">X</a>
+					</div>
+				</li>
 			<?php } ?>
 			</ul>
-			  
-			
 		</div>
 		<div class="row mt-3">
-			<button type="button" class="btn btn-primary btn-lg btn-block">Adicionar novo</button>
+			<a href="novo.php" type="button" class="btn btn-primary btn-lg btn-block">Adicionar novo</a>
 		</div>
 	</div>
 	

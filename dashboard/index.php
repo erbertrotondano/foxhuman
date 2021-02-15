@@ -14,7 +14,7 @@ getHeader();
 		<div class="row">
 			<div class="card text-center" style="width: 18rem;">
 			  <div class="card-body">
-			    <a href="#" class="btn btn-primary">Produtos</a>
+			    <a href="../produtos" class="btn btn-primary">Produtos</a>
 			  </div>
 			</div>
 			<div class="card text-center" style="width: 18rem;">

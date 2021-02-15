@@ -22,6 +22,18 @@ function getAllProducts($CONNECTION){
 
 	return pg_fetch_all($result);
 }
+function saveProduct($product, $CONNECTION){
+	$sql = "INSERT INTO products (product_name, unit_cost) values ('".$product["product_name"]."', ".$product["unit_cost"].");";
+
+	$result = pg_query($CONNECTION, $sql);
+	return($result);	
+}
+function deleteProduct($id, $CONNECTION){
+	$sql = "DELETE FROM products WHERE id=".$id.";";
+	
+	$result = pg_query($CONNECTION, $sql);
+	return($result);
+}
 function testDBconnection($CONNECTION){
 	if ($result = pg_query($CONNECTION, "SELECT * FROM test_table")) {
 	    printf("Select returned %d rows.\n", pg_num_rows($result));
