@@ -5,6 +5,10 @@ include_once 'connection.php';
 $SITE_URL = "http://" . $_SERVER['SERVER_NAME'].'/foxhuman/';
 // end of ENV VARS
 
+// Initializng DB
+init_db($tables);
+// --------------
+
 function testDBconnection($CONNECTION){
 	if ($result = pg_query($CONNECTION, "SELECT * FROM test_table")) {
 	    printf("Select returned %d rows.\n", pg_num_rows($result));
