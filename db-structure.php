@@ -1,14 +1,14 @@
 <?php 
 $tables = [
 	[
-	'table_name' => 'product_category',
+	'table_name' => 'product_categories',
 	'fields' => [
 		'id serial PRIMARY KEY,',
 		'category_name VARCHAR(999) NOT NULL'
 		]
 	],
 	[
-	'table_name' => 'product',
+	'table_name' => 'products',
 	'fields' => [
 		'id serial PRIMARY KEY,',
 		'product_name VARCHAR(9999) NOT NULL,',

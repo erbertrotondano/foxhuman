@@ -10,10 +10,18 @@ getHeader();
 			<h3 id='page-intro' class='text-muted'>Dashboard</h3>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-2"></div>
-		<div class="col-md-8 pl-5">
-
+	<div  class="col-md-12 pt-3">
+		<div class="row">
+			<div class="card text-center" style="width: 18rem;">
+			  <div class="card-body">
+			    <a href="#" class="btn btn-primary">Produtos</a>
+			  </div>
+			</div>
+			<div class="card text-center" style="width: 18rem;">
+			  <div class="card-body">
+			    <a href="#" class="btn btn-primary">Tipos de Produto</a>
+			  </div>
+			</div>
 		</div>
 	</div>
 	
