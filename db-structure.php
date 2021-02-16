@@ -12,16 +12,25 @@ $tables = [
 	'fields' => [
 		'id serial PRIMARY KEY,',
 		'product_name VARCHAR(9999) NOT NULL,',
-		'unit_cost NUMERIC'
+		'unit_cost NUMERIC,',
+		'amount NUMERIC'
 		]
-	],
+		],
 	[
 	'table_name' => 'taxes',
 	'fields' => [
 		'id serial PRIMARY KEY,',
 		'tax_name VARCHAR(99),',
 		'tax_value NUMERIC'
-	]
+		]
+	],
+	[
+	'table_name' => 'product_category_taxes',
+	'fields' => [
+		'id serial PRIMARY KEY,',
+		'product_category_id NUMERIC,',
+		'tax_id NUMERIC'
+		]
 	]
 ];
 function init_db($tables){
