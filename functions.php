@@ -27,7 +27,7 @@ function getAllProducts($CONNECTION){
 	return pg_fetch_all($result);
 }
 function saveProduct($product, $CONNECTION){
-	$sql = "INSERT INTO products (product_name, unit_cost) values ('".$product["product_name"]."', ".$product["unit_cost"].");";
+	$sql = "INSERT INTO products (product_name, unit_cost, category_id) values ('".$product["product_name"]."', ".$product["unit_cost"].", ".$product["category_id"].");";
 
 	$result = pg_query($CONNECTION, $sql);
 	return($result);	
@@ -101,5 +101,28 @@ function saveProductCategoryTax($product_category_tax, $CONNECTION){
 	$result = pg_query($CONNECTION, $sql);
 	return($result);	
 }
+function dropTables($tables, $CONNECTION){
+	$sql = '';
+	foreach ($tables as $table) {
+		$sql = $sql.'DROP TABLE '.$table['table_name'].';';
+	}
+
+	$result = pg_query($CONNECTION, $sql);
+	return($result);
+}
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

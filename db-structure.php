@@ -13,7 +13,8 @@ $tables = [
 		'id serial PRIMARY KEY,',
 		'product_name VARCHAR(9999) NOT NULL,',
 		'unit_cost NUMERIC,',
-		'amount NUMERIC'
+		'amount NUMERIC,',
+		'category_id NUMERIC'
 		]
 		],
 	[
