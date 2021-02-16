@@ -27,7 +27,7 @@ function getAllProducts($CONNECTION){
 	return pg_fetch_all($result);
 }
 function saveProduct($product, $CONNECTION){
-	$sql = "INSERT INTO products (product_name, unit_cost, category_id) values ('".$product["product_name"]."', ".$product["unit_cost"].", ".$product["category_id"].");";
+	$sql = "INSERT INTO products (product_name, unit_cost, category_id, amount) values ('".$product["product_name"]."', ".$product["unit_cost"].", ".$product["category_id"].", ".$product['amount'].");";
 
 	$result = pg_query($CONNECTION, $sql);
 	return($result);	
@@ -48,6 +48,11 @@ function testDBconnection($CONNECTION){
 }
 function getAllProductCategories($CONNECTION){
 	$result = pg_query($CONNECTION, "SELECT * FROM product_categories");	
+
+	return pg_fetch_all($result);
+}
+function findProduct($id, $CONNECTION){
+	$result = pg_query($CONNECTION, 'SELECT * FROM products WHERE id = '.$id);	
 
 	return pg_fetch_all($result);
 }

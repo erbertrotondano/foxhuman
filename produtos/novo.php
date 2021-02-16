@@ -33,6 +33,10 @@ getHeader();
 			    	<option>Selecione</option>
 			    </select>
 			  </div>
+			   <div class="form-group">
+			    <label for="amount">Quantidade em estoque</label>
+			    <input type="number" class="form-control" id="amount" name="amount" placeholder="Insira a quantidade de estoque que temos desse produto">
+			  </div>
 			  <button type="submit" class="btn btn-primary btn-lg btn-block">Salvar</button>
 			</form>
 

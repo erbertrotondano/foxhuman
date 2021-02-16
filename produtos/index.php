@@ -14,12 +14,14 @@ getHeader();
 			<?php 
 			$products = getAllProducts($CONNECTION); 
 			foreach($products as $product){ ?>
+				<a href="details.php?id=<?php echo $product['id'] ?>">
 				<li class="list-group-item">
 					<?php echo $product['product_name']; ?>	
 					<div class="float-right">
 						<a href="excluir.php?id=<?php echo $product['id'] ?>" class="badge badge-danger">X</a>
 					</div>
 				</li>
+				</a>
 			<?php } ?>
 			</ul>
 		</div>

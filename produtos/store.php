@@ -9,7 +9,8 @@ if ( isset($_POST['product_name']) && isset($_POST['unit_cost'])){
 	$product = [
 		'product_name' 	=> $_POST['product_name'],
 		'unit_cost' 	=> $_POST['unit_cost'],
-		'category_id' 	=> $_POST['product_category']
+		'category_id' 	=> $_POST['product_category'],
+		'amount' 		=> $_POST['amount']
 	];
 	if(saveProduct($product, $CONNECTION)){
 
