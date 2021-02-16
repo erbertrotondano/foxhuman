@@ -11,7 +11,7 @@ getHeader();
 	</div>
 	<div class="col-md-12 pt-3">
 
-			<form class="form" action="save.php" method="POST">
+			<form class="form" action="store.php" method="POST">
 			  <div class="form-group">
 			    <label for="product_name">Nome do Produto</label>
 			    <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Insira o nome: ">

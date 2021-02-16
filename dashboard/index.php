@@ -19,7 +19,7 @@ getHeader();
 			</div>
 			<div class="card text-center" style="width: 18rem;">
 			  <div class="card-body">
-			    <a href="#" class="btn btn-primary">Tipos de Produto</a>
+			    <a href="../categorias_de_produtos" class="btn btn-primary">Tipos de Produto</a>
 			  </div>
 			</div>
 		</div>

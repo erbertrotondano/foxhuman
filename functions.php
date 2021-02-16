@@ -42,5 +42,41 @@ function testDBconnection($CONNECTION){
 	    pg_free_result($result);
 	}
 }
+function getAllProductCategories($CONNECTION){
+	$result = pg_query($CONNECTION, "SELECT * FROM product_categories");	
+
+	return pg_fetch_all($result);
+}
+function saveProductCategory($product_category, $CONNECTION){
+	$sql = "INSERT INTO product_categories (category_name) values ('".$product_category["category_name"]."');";
+
+	$result = pg_query($CONNECTION, $sql);
+	if($result){
+		$sql = 'SELECT MAX(id) FROM product_categories';
+
+		$id = pg_query($CONNECTION, $sql);
+		return $id;
+	} else {
+		return($result);	
+	}
+	
+}
+function getAllTaxes($CONNECTION){
+	$result = pg_query($CONNECTION, "SELECT * FROM taxes");	
+
+	return pg_fetch_all($result);
+}
+function saveTax($tax, $CONNECTION){
+	$sql = "INSERT INTO taxes (tax_name, tax_value) values ('".$tax["tax_name"]."', ".$tax["tax_value"].");";
+	
+	$result = pg_query($CONNECTION, $sql);
+	return($result);	
+}
+function saveProductCategoryTax($product_category_tax, $CONNECTION){
+	$sql = "INSERT INTO product_category_tax (tax_id, product_category_id) values ('".$product_category_tax["tax_id"]."', ".$product_category_tax["product_category"].");";
+	
+	$result = pg_query($CONNECTION, $sql);
+	return($result);	
+}
 ?>
 
