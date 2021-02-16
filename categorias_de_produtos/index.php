@@ -15,10 +15,12 @@ getHeader();
 			$product_categories = getAllProductCategories($CONNECTION); 
 			foreach($product_categories as $category){ ?>
 				<li class="list-group-item">
-					<?php echo $category['category_name']; ?>	
-					<div class="float-right">
-						<a href="excluir.php?id=<?php echo $category['id'] ?>" class="badge badge-danger">X</a>
-					</div>
+					<a href="details.php?id=<?php echo $category['id']; ?>">
+						<?php echo $category['category_name']; ?>	
+						<div class="float-right">
+							<a href="excluir.php?id=<?php echo $category['id'] ?>" class="badge badge-danger">X</a>
+						</div>
+					</a>
 				</li>
 			<?php } ?>
 			</ul>

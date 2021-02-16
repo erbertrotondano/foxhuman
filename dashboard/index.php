@@ -22,6 +22,11 @@ getHeader();
 			    <a href="../categorias_de_produtos" class="btn btn-primary">Tipos de Produto</a>
 			  </div>
 			</div>
+			<div class="card text-center" style="width: 18rem;">
+			  <div class="card-body">
+			    <a href="../imposto" class="btn btn-primary">Impostos</a>
+			  </div>
+			</div>
 		</div>
 	</div>
 	

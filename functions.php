@@ -15,6 +15,10 @@ function getHeader(){
 function getFooter(){
 	include_once '../templates/footer.php';
 }
+function dd($dump){
+	var_dump($dump);
+	die();
+}
 
 // db functions
 function getAllProducts($CONNECTION){
@@ -47,6 +51,19 @@ function getAllProductCategories($CONNECTION){
 
 	return pg_fetch_all($result);
 }
+function findCategory($id, $CONNECTION){
+	$result = pg_query($CONNECTION, 'SELECT * FROM product_categories WHERE id = '.$id);
+
+	return pg_fetch_all($result);
+}
+function findTaxByCategory($cat, $CONNECTION){
+
+	$sql = 'SELECT * FROM product_category_taxes WHERE product_category_id = '.$cat.';';
+	$result = pg_query($CONNECTION, $sql);
+	
+	return pg_fetch_all($result);
+
+}
 function saveProductCategory($product_category, $CONNECTION){
 	$sql = "INSERT INTO product_categories (category_name) values ('".$product_category["category_name"]."');";
 
@@ -54,7 +71,7 @@ function saveProductCategory($product_category, $CONNECTION){
 	if($result){
 		$sql = 'SELECT MAX(id) FROM product_categories';
 
-		$id = pg_query($CONNECTION, $sql);
+		$id = pg_fetch_all(pg_query($CONNECTION, $sql))[0]['max'];
 		return $id;
 	} else {
 		return($result);	
@@ -72,9 +89,15 @@ function saveTax($tax, $CONNECTION){
 	$result = pg_query($CONNECTION, $sql);
 	return($result);	
 }
-function saveProductCategoryTax($product_category_tax, $CONNECTION){
-	$sql = "INSERT INTO product_category_tax (tax_id, product_category_id) values ('".$product_category_tax["tax_id"]."', ".$product_category_tax["product_category"].");";
+function findTax($id, $CONNECTION){
+	$sql = 'SELECT * FROM taxes WHERE id = '.$id.';';
 	
+	$result = pg_fetch_all(pg_query($CONNECTION, $sql));
+	return($result);		
+}
+function saveProductCategoryTax($product_category_tax, $CONNECTION){
+	$sql = "INSERT INTO product_category_taxes (tax_id, product_category_id) values ('".$product_category_tax["tax_id"]."', ".$product_category_tax["product_category"].");";
+
 	$result = pg_query($CONNECTION, $sql);
 	return($result);	
 }

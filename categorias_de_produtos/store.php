@@ -19,8 +19,8 @@ if ( isset($_POST['category_name']) && isset($_POST['tax'])){
 			'tax_id' 			=> $_POST['tax'],
 			'product_category' 	=> $product_category_id
 		];
+		$result = saveProductCategoryTax($product_category_tax, $CONNECTION);
 
-		saveProductCategoryTax($product_category_tax, $CONNECTION);
 		header("Location: ".$SITE_URL.'categorias_de_produtos');	
 	}
 	else {
