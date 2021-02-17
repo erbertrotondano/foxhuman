@@ -6,7 +6,7 @@ getHeader();
 	<div class="d-flex justify-content-between">
 		<a href="../dashboard" type="button" class="btn btn-danger">Voltar</a>
 		<h3>Produtos</h3>		
-		<a href="novo.php" type="button" class="btn btn-primary">Novo</a>
+		<p class="ml-5"></p>
 	</div>
 	<div  class="col-md-12 pt-3">
 		<div class="row">
@@ -17,9 +17,28 @@ getHeader();
 				foreach($products as $product){ ?>
 					
 					<li class="list-group-item">
-						<?php echo $product['product_name']; ?>	
-						<div class="float-right">
-							<input class="form-control" type="number" name="amount['<?php echo $product["id"] ?>']	" value="0" />
+						<div class="row pl-5 ml-3">
+							<div class="col-md-6">
+								<div class="row pb-2">
+								<p class="">
+									<?php echo $product['product_name']; ?>	
+								</p>
+								</div>
+								<div class="row">
+								<p class="text-secondary">
+									Preço unitário: <?php echo $product['unit_cost'];  ?>
+								</p>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row pb-2">
+									<label class="text-secondary pt-1 pr-2">Quantidade: </label>
+									<input class="form-control w-50" type="number" name="amount['<?php echo $product["id"] ?>']	" value="0" />
+								</div>
+								<div class="row">
+									<p class="text-secondary">Estoque atual: <?php echo $product['amount']; ?></p>
+								</div>
+							</div>
 						</div>
 					</li>
 
