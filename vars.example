@@ -1,0 +1,7 @@
+<?php 
+$host	= 'localhost';
+$user 	= 'foxhuman';
+$pass 	= 'password';
+$db 	= 'foxhuman';
+?>
+
