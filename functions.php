@@ -19,7 +19,9 @@ function dd($dump){
 	var_dump($dump);
 	die();
 }
-
+function format_coin($value){
+	return number_format($value, 2, ',');
+}
 // db functions
 function getAllProducts($CONNECTION){
 	$result = pg_query($CONNECTION, "SELECT * FROM products");	
@@ -147,6 +149,15 @@ function saveProductCategoryTax($product_category_tax, $CONNECTION){
 
 	$result = pg_query($CONNECTION, $sql);
 	return($result);	
+}
+function getProductCategoryTax($product, $CONNECTION){
+	$sql = 'SELECT tax_id FROM product_category_taxes WHERE product_category_id = '.$product['category_id'].';';
+
+	$tax_id = pg_fetch_all(pg_query($CONNECTION, $sql))[0]['tax_id'];
+
+	$tax = findTax($tax_id, $CONNECTION);
+
+	return($tax[0]);
 }
 function dropTables($tables, $CONNECTION){
 	$sql = '';

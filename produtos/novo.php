@@ -18,19 +18,19 @@ getHeader();
 			  </div>
 			  <div class="form-group">
 			    <label for="unit_cost">Valor Unitário</label>
-			    <input type="number" class="form-control" id="unit_cost" name="unit_cost" placeholder="Insira o valor de cada unidade do produto">
+			    <input type="number" class="form-control" id="unit_cost" step="0.01" min="0" name="unit_cost" placeholder="Insira o valor de cada unidade do produto">
 			  </div>
 			 
 			  <div class="form-group">
 			    <label for="product_category">Tipo do Produto</label>
 			    <select class="form-control" name="product_category">
+			    	<option>Selecione</option>
 			    <?php 
 			    	$categories = getAllProductCategories($CONNECTION); 
 			    	foreach ($categories as $category) { ?>
 			    		<option value="<?php echo $category['id'] ?>"><?php echo $category['category_name']; ?></option>
 			    	<?php }
 			    ?>
-			    	<option>Selecione</option>
 			    </select>
 			  </div>
 			   <div class="form-group">
