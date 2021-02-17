@@ -32,6 +32,22 @@ $tables = [
 		'product_category_id NUMERIC,',
 		'tax_id NUMERIC'
 		]
+	],
+	[
+	'table_name' => 'shopping_items',
+	'fields' => [
+		'id serial PRIMARY KEY,',
+		'product_id NUMERIC,',
+		'amount NUMERIC,',
+		'shopping_car_id NUMERIC'
+		]
+	],
+	[
+	'table_name' => 'shopping_car',
+	'fields' => [
+		'id serial PRIMARY KEY,',
+		'created_at DATE'
+		]
 	]
 ];
 function init_db($tables){

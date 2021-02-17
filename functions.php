@@ -56,6 +56,48 @@ function findProduct($id, $CONNECTION){
 
 	return pg_fetch_all($result);
 }
+function sellProduct($params, $CONNECTION){
+
+	$product = findProduct($params['product_id'], $CONNECTION)[0];
+	// dd($params['amount']);
+	if($params['amount'] <= $product['amount']){
+		$sql = 'INSERT INTO shopping_items (product_id, shopping_car_id, amount) values ('.$params["product_id"].', '.$params["shopping_car_id"].', '.$params["amount"].');';
+		
+		$current_stock = $product['amount'] - $params['amount'];
+
+
+		$update = 'UPDATE products SET amount = '.$current_stock.' WHERE id = '.$product['id'].';';
+
+		$result = pg_query($CONNECTION, $update);	
+		$status = [
+			'id'		=> '200',
+			'message'	=> 'Produto '.$product["product_name"].' vendido com sucesso'
+		];
+	} else {
+		$status = [
+			'id'		=> 'ST01',
+			'message'	=> 'Não temos a quantidade desejada do produto '.$product["product_name"].' em estoque'
+		];
+	}
+
+	return $status;
+
+}
+function initiateShoppingCar($CONNECTION){
+	$date = date('d-m-y h:i:s');
+	
+	$sql = "INSERT INTO shopping_car (created_at) values (CURRENT_TIMESTAMP(0));";
+	
+	$insert_result = pg_query($CONNECTION, $sql);
+
+	$sql = 'SELECT MAX(id) FROM shopping_car;';
+
+	$car_id = pg_fetch_all(pg_query($CONNECTION, $sql))[0]['max'];
+
+	return($car_id);
+
+
+}
 function findCategory($id, $CONNECTION){
 	$result = pg_query($CONNECTION, 'SELECT * FROM product_categories WHERE id = '.$id);
 
