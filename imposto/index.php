@@ -17,7 +17,7 @@ getHeader();
 				<li class="list-group-item">
 					<?php echo $tax['tax_name']; ?>	
 					<div class="float-right">
-						<a href="excluir.php?id=<?php echo $tax['id'] ?>" class="badge badge-danger">X</a>
+						<a href="excluir.php?id=<?php echo $tax['id'] ?>" name="delete_btn" class="badge badge-danger">X</a>
 					</div>
 				</li>
 			<?php } ?>
@@ -28,5 +28,19 @@ getHeader();
 
 
 <?php function scripts(){ ?>
+	<script type="text/javascript">
+		const delete_btns = document.getElementsByName('delete_btn');
+		
+		delete_btns.forEach((item) => {
+			item.addEventListener('click', (e) => { 
+				if(confirm('Ao deletar esse registro, você deletará todos os produtos e categorias associadas a ele. Deseja continuar?')){
+					return true;
+				} else {
+					e.preventDefault();
+				}
+			});
+		})
+		
+	</script>
 <?php } ?>
 <?php getFooter(); ?>

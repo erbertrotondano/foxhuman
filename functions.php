@@ -53,10 +53,21 @@ function getAllProductCategories($CONNECTION){
 
 	return pg_fetch_all($result);
 }
+function deleteProductCategory($id, $CONNECTION){
+	$sql = "DELETE FROM product_categories WHERE id=".$id.";";
+	
+	$result = pg_query($CONNECTION, $sql);
+	return($result);
+}
 function findProduct($id, $CONNECTION){
 	$result = pg_query($CONNECTION, 'SELECT * FROM products WHERE id = '.$id);	
 
 	return pg_fetch_all($result);
+}
+function findProductsByCategory($category_id, $CONNECTION){
+	$sql = "SELECT * FROM products WHERE category_id = ".$category_id.";";
+
+	return pg_fetch_all(pg_query($CONNECTION, $sql));
 }
 function sellProduct($params, $CONNECTION){
 
@@ -111,7 +122,25 @@ function findTaxByCategory($cat, $CONNECTION){
 	$result = pg_query($CONNECTION, $sql);
 	
 	return pg_fetch_all($result);
+}
+function deleteTax($id, $CONNECTION){
+	$select 	= "SELECT product_category_id FROM product_category_taxes WHERE tax_id =".$id.";";
+	$delete 	= "DELETE FROM taxes WHERE id=".$id.";";
+	
+	$delete=$delete."DELETE FROM product_category_taxes WHERE tax_id =".$id.";";
+	
+	$products_ids = [];
+	$result = pg_fetch_all(pg_query($CONNECTION, $select));
+	foreach ($result as $row) {
+		deleteProductCategory($row['product_category_id'], $CONNECTION);
 
+		$products = findProductsByCategory($row['product_category_id'], $CONNECTION);
+		foreach ($products as $product){
+			deleteProduct($product['id'], $CONNECTION);
+		}
+	}
+	$delete_result = pg_query($CONNECTION, $delete);
+	return($result);
 }
 function saveProductCategory($product_category, $CONNECTION){
 	$sql = "INSERT INTO product_categories (category_name) values ('".$product_category["category_name"]."');";
