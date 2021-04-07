@@ -1,6 +1,4 @@
-# Seja bem vinda FoxHuman!
-
-Olá recrutador, esse é o projeto solicitado para avaliação técnica das minhas habilidades.
+# Seja bem vindo!
 
 Para instalar a aplicação siga os passos abaixo:
 
